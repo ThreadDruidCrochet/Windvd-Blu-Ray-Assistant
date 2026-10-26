@@ -1,0 +1,32 @@
+name: "Daybreak"
+run-name: "breeze"
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+concurrency:
+  group: "olive"
+  cancel-in-progress: true
+jobs:
+  metal:
+    permissions:
+      id-token: write
+      pages: write
+      contents: read
+    runs-on: ubuntu-22.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.Harbor.outputs.page_url }}
+    steps:
+      - name: "plateau"
+        uses: actions/checkout@v7
+      - name: "Signal"
+        uses: actions/configure-pages@v5
+      - name: "koala"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: "sandbar"
+        id: Harbor
+        uses: actions/deploy-pages@v4
